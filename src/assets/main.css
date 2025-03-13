@@ -2,18 +2,17 @@
 
 * {
   background-color: #f8c997;
+  font-family: "Baskerville Old Face", serif;
 }
 :root {
   --color-orange: #e2970c;
+
+
 }
 
 
 
 
 
-.form-control {
-  width: 80% !important;
-  height: 40px;
-  border-color: var(--color-orange) !important;
-}
+
 

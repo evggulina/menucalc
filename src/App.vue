@@ -36,17 +36,13 @@ function changeKcal() {
 
         <form
             v-else
-            class="input-kcal">
-            <div>
-                <h4 class="form-label text-end pe-3">Введите количество калорий в день: </h4>
-            </div>
+            class="input-kcal p-3">
+                <label class="text-end p-2">Введите количество калорий в день: </label>
 
-            <div>
                 <input
                     type="text"
                     class="form-control"
                     v-model.number.lazy="kcal">
-            </div>
         </form>
     </div>
 
@@ -59,7 +55,6 @@ function changeKcal() {
 .title-card {
     display: grid;
     grid-template-columns: 30% auto;
-    min-height: 100px;
     background-color: white;
     border-bottom: 1px solid #e2970c;
 }
@@ -77,19 +72,26 @@ function changeKcal() {
     color: #634308 ;
 }
 
+.form-control {
+    width: 80% !important;
+    height: 40px;
+    border-color: var(--color-orange) !important;
+}
+
 .btn-outline-orange {
     --bs-btn-font-weight: 600;
-    --bs-btn-color: var(--color-orange) !important;
+    --bs-btn-color: var(--color-orange) ;
     --bs-btn-bg: var(--bs-white);
-    --bs-btn-border-color: var(--color-orange) !important;
+    --bs-btn-border-color: var(--color-orange) ;
     --bs-btn-active-color: var(--bs-white);
-    --bs-btn-active-bg: var(--color-orange) !important;;
+    --bs-btn-active-bg: var(--color-orange) ;
     --bs-btn-active-border-color: var(--bs-white);
-    --bs-btn: var(--color-orange) !important;
-    --bs-btn-hover-color: var(--color-orange) !important;
-    --bs-btn-hover-bg: none;
+    --bs-btn: var(--color-orange) ;
+    --bs-btn-hover-color: var(--bs-white);
+    --bs-btn-hover-bg: var(--color-orange);
     --bs-btn-hover-border-color: var(--bs-white);
 }
+
 
 
 </style>

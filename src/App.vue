@@ -1,47 +1,60 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
-import TheWelcome from './components/TheWelcome.vue'
+import { ref } from 'vue'
+
+const kcal = ref(null)
+
+function changeKcal() {
+    kcal.value = null
+}
+
 </script>
 
+
+
+
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="./assets/logo.svg" width="125" height="125" />
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-    </div>
-  </header>
+        <div class="title-card">
+            <div class="ps-5 d-flex" >
+                <a href="#" class="link-success">Админка</a>
+            </div>
 
-  <main>
-    <TheWelcome />
-  </main>
+            <div
+                v-if="kcal > 0"
+                class="d-flex"
+            >
+                <div class="w-100">
+                    <h1 class="ps-3">Меню на неделю на {{ kcal }}</h1>
+                </div>
+
+                <div class="w-25">
+                    <button
+                        class="btn btn-outline-secondary"
+                        @click="changeKcal"> Изменить
+                    </button>
+                </div>
+            </div>
+
+            <form
+                v-else
+                class="d-flex">
+                <div class="w-100">
+                    <h4 class="form-label text-end pe-3">Введите количество калорий в день: </h4>
+                </div>
+
+                <div class="w-25">
+                    <input
+                        type="text"
+                        class="form-control"
+                        v-model.number.lazy="kcal">
+                </div>
+            </form>
+        </div>
 </template>
 
+
+
+
 <style scoped>
-header {
-  line-height: 1.5;
-}
 
-.logo {
-  display: block;
-  margin: 0 auto 2rem;
-}
-
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-
-  .logo {
-    margin: 0 2rem 0 0;
-  }
-
-  header .wrapper {
-    display: flex;
-    place-items: flex-start;
-    flex-wrap: wrap;
-  }
-}
 </style>

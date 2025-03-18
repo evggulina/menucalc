@@ -1,7 +1,47 @@
 <script setup>
 import {ref} from 'vue'
+import {useMainStore} from "@/components/stores/mainStore.js";
 
+const MainStore = useMainStore()
 const kcal = ref(null)
+
+// const days = ref([
+//     {
+//         id: 1,
+//         idn: 'mon',
+//         name: 'Понедельник'
+//     },
+//     {
+//         id: 2,
+//         idn: 'tue',
+//         name: 'Вторник'
+//     },
+//     {
+//         id: 3,
+//         idn: 'wed',
+//         name: 'Среда'
+//     },
+//     {
+//         id: 4,
+//         idn: 'thu',
+//         name: 'Четверг'
+//     },
+//     {
+//         id: 5,
+//         idn: 'fri',
+//         name: 'Пятница'
+//     },
+//     {
+//         id: 6,
+//         idn: 'sat',
+//         name: 'Суббота'
+//     },
+//     {
+//         id: 7,
+//         idn: 'sun',
+//         name: 'Воскресенье'
+//     },
+// ])
 
 function changeKcal() {
     kcal.value = null
@@ -37,7 +77,7 @@ function changeKcal() {
         <form
             v-else
             class="input-kcal p-3">
-                <label class="text-end p-2">Введите количество калорий в день: </label>
+                <label class="text-end p-2">Количество калорий в день: </label>
 
                 <input
                     type="text"
@@ -45,6 +85,18 @@ function changeKcal() {
                     v-model.number.lazy="kcal">
         </form>
     </div>
+
+<!--- компонент недели --->
+    <div class="week p-3">
+        <template v-for="day in MainStore.days" >
+            <div >
+                <h5 class="p-3">{{ day.name }}</h5>
+            </div>
+
+        </template>
+    </div>
+
+
 
 
 </template>
@@ -55,7 +107,7 @@ function changeKcal() {
 .title-card {
     display: grid;
     grid-template-columns: 30% auto;
-    background-color: white;
+    background-color: #f8c997;
     border-bottom: 1px solid #e2970c;
 }
 
@@ -72,10 +124,34 @@ function changeKcal() {
     color: #634308 ;
 }
 
+.week {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    
+}
+
+.week div{
+    background: #BDE592BF;
+    border: 2px solid #7E9A4EFF;
+    border-radius: 18px;
+    flex: 0 0 auto;
+    width: 13%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+
+}
+
+
 .form-control {
     width: 80% !important;
     height: 40px;
     border-color: var(--color-orange) !important;
+}
+
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(253, 77, 13, 0.25);
 }
 
 .btn-outline-orange {
@@ -93,5 +169,24 @@ function changeKcal() {
 }
 
 
+
+@media (max-width: 1100px) {
+    .week div{
+        width: 17%;
+    }
+
+}
+
+@media (max-width: 585px) {
+    .card-kcal, .input-kcal {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .title-card {
+        display: flex;
+    }
+}
 
 </style>
